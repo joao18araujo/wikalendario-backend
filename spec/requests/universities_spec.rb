@@ -5,7 +5,7 @@ RSpec.describe "Universities", type: :request do
     let!(:university) { create(:university) }
 
     before do
-      get universities_path
+      get universities_path, as: :json
     end
 
     it 'should return status 200' do
@@ -17,7 +17,7 @@ RSpec.describe "Universities", type: :request do
     end
 
     it 'should return universities params' do
-      expect(response_body[0]).to include('id', 'name')
+      expect(response_body[0]).to include('id', 'name', 'current_semester')
     end
   end
 
@@ -25,7 +25,7 @@ RSpec.describe "Universities", type: :request do
     let!(:university) { create(:university) }
 
     before do
-      get university_path(university)
+      get university_path(university), as: :json
     end
 
     it 'should return status 200' do
