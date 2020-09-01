@@ -17,7 +17,11 @@ RSpec.describe "Universities", type: :request do
     end
 
     it 'should return universities params' do
-      expect(response_body[0]).to include('id', 'name', 'current_semester')
+      expect(response_body[0]).to include('id', 'name')
+    end
+
+    it 'should not return universities associations' do
+      expect(response_body[0]).not_to include('current_semester', 'campi')
     end
   end
 
@@ -36,8 +40,8 @@ RSpec.describe "Universities", type: :request do
       expect(response_body['id']).to eq(university.id)
     end
 
-    it 'should return university params' do
-      expect(response_body).to include('id', 'name')
+    it 'should return university params and associations' do
+      expect(response_body).to include('id', 'name', 'current_semester', 'campi')
     end
   end
 end

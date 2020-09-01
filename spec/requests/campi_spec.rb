@@ -32,8 +32,8 @@ RSpec.describe "/campi", type: :request do
       expect(response_body[0]).to include('id', 'name')
     end
 
-    it 'should return university params' do
-      expect(response_body[0]).not_to include('university')
+    it 'should not return campi associations' do
+      expect(response_body[0]).not_to include('courses', 'departments')
     end
   end
 
@@ -52,8 +52,8 @@ RSpec.describe "/campi", type: :request do
       expect(response_body['id']).to eq(campus.id)
     end
 
-    it 'should return campus params' do
-      expect(response_body).to include('id', 'name', 'university')
+    xit 'should return campus params and associations' do
+      expect(response_body).to include('id', 'name', 'university', 'courses', 'departments')
     end
   end
 end

@@ -1,2 +1,2 @@
 json.extract! campus, :id, :name
-json.university campus.university
+json.courses campus.courses, partial: "courses/course", as: :course

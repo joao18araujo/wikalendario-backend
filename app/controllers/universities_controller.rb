@@ -7,9 +7,7 @@ class UniversitiesController < ApplicationController
   end
 
   # GET /universities/1
-  def show
-    render json: @university
-  end
+  def show; end
 
   private
     def set_university
