@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_01_002936) do
+ActiveRecord::Schema.define(version: 2020_09_01_005020) do
 
   create_table "campi", force: :cascade do |t|
     t.string "name"
@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(version: 2020_09_01_002936) do
     t.index ["university_id"], name: "index_semesters_on_university_id"
   end
 
+  create_table "subjects", force: :cascade do |t|
+    t.string "name"
+    t.integer "department_id", null: false
+    t.integer "semester_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["department_id"], name: "index_subjects_on_department_id"
+    t.index ["semester_id"], name: "index_subjects_on_semester_id"
+  end
+
   create_table "universities", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -55,4 +65,6 @@ ActiveRecord::Schema.define(version: 2020_09_01_002936) do
   add_foreign_key "courses", "campi"
   add_foreign_key "departments", "campi"
   add_foreign_key "semesters", "universities"
+  add_foreign_key "subjects", "departments"
+  add_foreign_key "subjects", "semesters"
 end

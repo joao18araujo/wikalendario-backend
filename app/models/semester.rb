@@ -3,4 +3,6 @@ class Semester < ApplicationRecord
   validates :end_date, presence: true
 
   belongs_to :university
+
+  has_many :subjects, dependent: :destroy
 end
