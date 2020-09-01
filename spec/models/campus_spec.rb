@@ -8,5 +8,6 @@ RSpec.describe Campus, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to(:university) }
     it { is_expected.to have_many(:courses) }
+    it { is_expected.to have_many(:departments) }
   end
 end
