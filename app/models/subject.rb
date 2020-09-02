@@ -3,4 +3,6 @@ class Subject < ApplicationRecord
 
   belongs_to :department
   belongs_to :semester
+
+  has_many :subject_classes
 end

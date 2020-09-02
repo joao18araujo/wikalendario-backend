@@ -5,6 +5,7 @@ RSpec.describe "/subjects", type: :request do
     let!(:subject) { create(:subject) }
 
     before do
+      FactoryBot.create :subject_class, subject: subject
       get subject_path(subject), as: :json
     end
 
@@ -17,7 +18,11 @@ RSpec.describe "/subjects", type: :request do
     end
 
     it 'should return subjects params and associations' do
-      expect(response_body).to include('id', 'name')
+      expect(response_body).to include('id', 'name', 'subject_classes')
+    end
+
+    it 'should return subject classes params and associations' do
+      expect(response_body['subject_classes'][0]).to include('id', 'name', 'schedules')
     end
   end
 end
