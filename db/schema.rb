@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_05_214854) do
+ActiveRecord::Schema.define(version: 2020_09_05_222758) do
 
   create_table "campi", force: :cascade do |t|
     t.string "name"
@@ -85,6 +85,17 @@ ActiveRecord::Schema.define(version: 2020_09_05_214854) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "nickname"
+    t.string "email"
+    t.string "password_digest"
+    t.integer "course_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_users_on_course_id"
+  end
+
   add_foreign_key "campi", "universities"
   add_foreign_key "courses", "campi"
   add_foreign_key "departments", "campi"
@@ -94,4 +105,5 @@ ActiveRecord::Schema.define(version: 2020_09_05_214854) do
   add_foreign_key "subject_classes", "subjects"
   add_foreign_key "subjects", "departments"
   add_foreign_key "subjects", "semesters"
+  add_foreign_key "users", "courses"
 end

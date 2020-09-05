@@ -7,5 +7,6 @@ RSpec.describe Course, type: :model do
 
   describe 'associations' do
     it { is_expected.to belong_to(:campus) }
+    it { is_expected.to have_many(:users) }
   end
 end
