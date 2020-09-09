@@ -1,0 +1,22 @@
+pt-BR:
+  api_guard:
+    authentication:
+      signed_in: 'Logado com sucesso'
+      signed_out: 'Deslogado com sucesso'
+      invalid_login_credentials: 'Credenciais inválidas'
+    password:
+      changed: 'Senha alterada com sucesso'
+    registration:
+      signed_up: 'Conta criada com sucesso'
+      account_deleted: 'Conta excluída com sucesso'
+    access_token:
+      refreshed: 'Token atualizado com sucesso'
+      missing: 'Não há access token no request'
+      invalid: 'Access token inválido'
+      expired: 'Access token expiradp'
+    refresh_token:
+      invalid: 'Refresh token inválido'
+      missing: 'Não há refresh token no request'
+    response:
+      success: 'successo'
+      error: 'erro'

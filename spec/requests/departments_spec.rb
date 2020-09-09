@@ -3,9 +3,11 @@ require 'rails_helper'
 RSpec.describe "/departments", type: :request do
   describe "GET /departments/:id" do
     let!(:department) { create(:department) }
+    let(:user) { create(:user) }
+    let(:token) { create_token(user) }
 
     before do
-      get department_path(department), as: :json
+      get department_path(department), headers: { Authorization: token }, as: :json
     end
 
     it 'should return status 200' do

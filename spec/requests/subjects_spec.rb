@@ -3,10 +3,12 @@ require 'rails_helper'
 RSpec.describe "/subjects", type: :request do
   describe "GET /subjects/:id" do
     let!(:subject) { create(:subject) }
+    let(:user) { create(:user) }
+    let(:token) { create_token(user) }
 
     before do
       FactoryBot.create :subject_class, subject: subject
-      get subject_path(subject), as: :json
+      get subject_path(subject), headers: { Authorization: token }, as: :json
     end
 
     it 'should return status 200' do

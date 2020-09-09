@@ -3,9 +3,11 @@ require 'rails_helper'
 RSpec.describe "/campi", type: :request do
   describe "GET /campi/:id" do
     let!(:campus) { create(:campus) }
+    let(:user) { create(:user) }
+    let(:token) { create_token(user) }
 
     before do
-      get campus_path(campus), as: :json
+      get campus_path(campus), headers: { Authorization: token }, as: :json
     end
 
     it 'should return status 200' do

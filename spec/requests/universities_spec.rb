@@ -3,9 +3,11 @@ require 'rails_helper'
 RSpec.describe "Universities", type: :request do
   describe "GET /universities" do
     let!(:university) { create(:university) }
+    let(:user) { create(:user) }
+    let(:token) { create_token(user) }
 
     before do
-      get universities_path, as: :json
+      get universities_path, headers: { Authorization: token }, as: :json
     end
 
     it 'should return status 200' do
@@ -29,7 +31,7 @@ RSpec.describe "Universities", type: :request do
     let!(:university) { create(:university) }
 
     before do
-      get university_path(university), as: :json
+      get university_path(university), headers: { Authorization: token }, as: :json
     end
 
     it 'should return status 200' do
