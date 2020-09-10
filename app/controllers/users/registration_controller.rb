@@ -20,7 +20,7 @@ module Users
     private
 
     def sign_up_params
-      params.permit(:nickname, :password, :password_confirmation, :course_id, :name, :email)
+      params.require(:user).permit(:nickname, :password, :password_confirmation, :course_id, :name, :email)
     end
   end
 end
